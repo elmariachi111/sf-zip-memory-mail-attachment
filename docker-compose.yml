@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+    php:
+        build:
+            context: php7-cli
+            args:
+                TIMEZONE: ${TIMEZONE}
+        volumes:
+            - ${SYMFONY_APP_PATH}:/var/www/symfony
+
+    mailcatcher:
+        image: tophfr/mailcatcher
+        ports:
+          - 1080:80
